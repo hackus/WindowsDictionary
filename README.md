@@ -59,10 +59,10 @@ C:\Users<user>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs
 4. After setup, you can copy any text from anywhere (Ctrl+C) and launch the script using your assigned hotkey.
 5. If there are additional dictionaries you’d like, feel free to let me know and I’ll include them.
 
-⚠️ Note: Before clicking OK on the “Step 3: move shortcut to Start Menu Programs folder” message, make sure you’ve assigned a Hotkey in the Properties dialog.
+⚠️ Before clicking OK on the “Step 3: move shortcut to Start Menu Programs folder” message, make sure you’ve assigned a Hotkey in the Properties dialog.
 If you accidentally close the Properties window without assigning one, just run the corresponding Uninstall script for that dictionary and reinstall it to try again.
 
-If you want to uninstall all the dictionaries at once run UninstallAllShortcuts.vbs
+⚠️ If you want to uninstall all the dictionaries at once run UninstallAllShortcuts.vbs
 
 ---
 
