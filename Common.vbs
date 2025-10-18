@@ -113,7 +113,36 @@ Sub CreateSelfShortcut()
     End If
 End Sub
 
+Sub RemoveSelfShortcut()
+    Dim fso, wsh, scriptPath, scriptName, startMenuPath, shortcutPath
 
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set wsh = CreateObject("WScript.Shell")
 
+    ' Identify the shortcut path in Start Menu
+    scriptPath = WScript.ScriptFullName
+    scriptName = fso.GetBaseName(scriptPath)
+	
+    ' Remove "_Uninstall" (case-insensitive)
+    If LCase(Right(scriptName, 10)) = "_uninstall" Then
+        scriptName = Left(scriptName, Len(scriptName) - 10)
+    End If
+	
+    startMenuPath = wsh.SpecialFolders("Programs")
+    shortcutPath = fso.BuildPath(startMenuPath, scriptName & ".lnk")
 
-
+    ' Check if it exists
+    If fso.FileExists(shortcutPath) Then
+        On Error Resume Next
+        fso.DeleteFile shortcutPath, True
+        If Err.Number = 0 Then
+            ' WScript.Echo "Shortcut removed successfully: " & shortcutPath
+        Else
+            WScript.Echo "Error removing shortcut: " & Err.Description
+            Err.Clear
+        End If
+        On Error GoTo 0
+    Else
+        ' WScript.Echo "No shortcut found to remove: " & shortcutPath
+    End If
+End Sub
